@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embry Labs — AI Integration Consulting for Small Business</title>
+    <meta name="description" content="Embry Labs delivers hands-on AI integration consulting for small businesses. MCP tools, agentic AI, database integration, custom applications, local AI deployment, and more. Free consultation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           EMBRY LABS — HOMEPAGE STYLES
+           Dark theme with cyan/teal + violet accents
+           ======================================== */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep:       #06080f;
+            --bg-primary:    #0a0e1a;
+            --bg-card:       #0f1422;
+            --bg-card-hover: #141a2e;
+            --border-subtle: rgba(56, 189, 248, 0.08);
+            --border-accent: rgba(56, 189, 248, 0.2);
+            --cyan:          #38bdf8;
+            --cyan-bright:   #67e8f9;
+            --cyan-glow:     rgba(56, 189, 248, 0.15);
+            --violet:        #8b5cf6;
+            --violet-glow:   rgba(139, 92, 246, 0.15);
+            --emerald:       #34d399;
+            --amber:         #fbbf24;
+            --rose:          #fb7185;
+            --text-primary:  #f1f5f9;
+            --text-secondary:#94a3b8;
+            --text-muted:    #64748b;
+            --gradient-hero: linear-gradient(135deg, var(--cyan) 0%, var(--violet) 100%);
+            --gradient-card: linear-gradient(135deg, rgba(56,189,248,0.05), rgba(139,92,246,0.05));
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── Reusable ─────────────────────────── */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: var(--cyan-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 999px;
+            padding: 6px 16px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 640px;
+            line-height: 1.7;
+        }
+
+        .gradient-text {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 28px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-hero);
+            color: #fff;
+            box-shadow: 0 0 30px var(--cyan-glow), 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px rgba(56,189,248,0.3), 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cyan-glow);
+            border-color: var(--cyan);
+        }
+
+        /* ── Navigation ────────────────────────── */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(6, 8, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(6, 8, 15, 0.95);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .nav-logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan-bright);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ── Hero ──────────────────────────────── */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, rgba(139,92,246,0.04) 40%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--border-accent);
+            background: var(--cyan-glow);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--cyan-bright);
+            margin-bottom: 28px;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--emerald);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52,211,153,0.4); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(52,211,153,0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.08;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-terminal {
+            background: var(--bg-card);
+            border: 1px solid var(--border-accent);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 80px rgba(56,189,248,0.06), 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #ef4444; }
+        .terminal-dot.yellow { background: #eab308; }
+        .terminal-dot.green { background: #22c55e; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .terminal-body {
+            padding: 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.9;
+            min-height: 320px;
+        }
+
+        .terminal-body .prompt {
+            color: var(--emerald);
+        }
+
+        .terminal-body .command {
+            color: var(--cyan-bright);
+        }
+
+        .terminal-body .output {
+            color: var(--text-secondary);
+        }
+
+        .terminal-body .success {
+            color: var(--emerald);
+        }
+
+        .terminal-body .accent {
+            color: var(--violet);
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--cyan);
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ── Trust bar ─────────────────────────── */
+
+        .trust-bar {
+            padding: 60px 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(15,20,34,0.5);
+        }
+
+        .trust-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            opacity: 0.5;
+        }
+
+        .trust-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .trust-logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--text-secondary);
+        }
+
+        /* ── Problem/Solution ──────────────────── */
+
+        .problem-solution {
+            background: var(--bg-primary);
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .ps-card {
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            background: var(--gradient-card);
+        }
+
+        .ps-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .ps-card.problem h3 { color: var(--rose); }
+        .ps-card.solution h3 { color: var(--emerald); }
+
+        .ps-card ul {
+            list-style: none;
+        }
+
+        .ps-card li {
+            padding: 10px 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .ps-card li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .ps-card.problem li::before { background: var(--rose); }
+        .ps-card.solution li::before { background: var(--emerald); }
+
+        /* ── Services ──────────────────────────── */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .service-card {
+            padding: 36px 28px;
+            border-radius: 14px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-hero);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--border-accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.35rem;
+        }
+
+        .service-icon.cyan    { background: var(--cyan-glow); border: 1px solid rgba(56,189,248,0.15); }
+        .service-icon.violet  { background: var(--violet-glow); border: 1px solid rgba(139,92,246,0.15); }
+        .service-icon.emerald { background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.15); }
+        .service-icon.amber   { background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.15); }
+        .service-icon.rose    { background: rgba(251,113,133,0.12); border: 1px solid rgba(251,113,133,0.15); }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 16px;
+        }
+
+        .service-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(56,189,248,0.08);
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* ── How It Works ──────────────────────── */
+
+        .how-it-works {
+            background: var(--bg-primary);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 36px 20px;
+            border-radius: 14px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            position: relative;
+        }
+
+        .step-number {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: #fff;
+            margin: 0 auto 20px;
+        }
+
+        .step-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .step-connector {
+            display: none; /* shown via CSS on desktop */
+        }
+
+        /* ── Tech Stack ────────────────────────── */
+
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            transition: all 0.2s;
+        }
+
+        .tech-item:hover {
+            border-color: var(--border-accent);
+            background: var(--bg-card-hover);
+        }
+
+        .tech-item-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .tech-item-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* ── Feature Deep-Dives ────────────────── */
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .feature-row:nth-child(even) .feature-visual {
+            order: -1;
+        }
+
+        .feature-content .section-label {
+            margin-bottom: 16px;
+        }
+
+        .feature-content h3 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .feature-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+
+        .feature-list li .check {
+            color: var(--emerald);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 32px;
+            min-height: 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-code {
+            width: 100%;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .feature-code .keyword { color: var(--violet); }
+        .feature-code .string  { color: var(--emerald); }
+        .feature-code .func    { color: var(--cyan-bright); }
+        .feature-code .comment { color: var(--text-muted); }
+        .feature-code .number  { color: var(--amber); }
+
+        /* ── Security Section ──────────────────── */
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .security-card {
+            padding: 32px 24px;
+            border-radius: 14px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            text-align: center;
+        }
+
+        .security-card .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .security-card h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .security-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── CTA Section ───────────────────────── */
+
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(56,189,248,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-box {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 48px;
+            border-radius: 20px;
+            border: 1px solid var(--border-accent);
+            background: var(--gradient-card);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-box .btn {
+            font-size: 1.05rem;
+            padding: 16px 36px;
+        }
+
+        .cta-includes {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .cta-includes span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .cta-includes .ico {
+            color: var(--emerald);
+        }
+
+        /* ── Footer ────────────────────────────── */
+
+        .footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-deep);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-top: 16px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--cyan-bright);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--cyan);
+        }
+
+        /* ── Animations ────────────────────────── */
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ────────────────────────── */
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-visual { display: none; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature-row { grid-template-columns: 1fr; gap: 32px; }
+            .feature-row:nth-child(even) .feature-visual { order: 0; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-cta .btn-secondary { display: none; }
+            .hamburger { display: flex; }
+            .section { padding: 64px 0; }
+            .services-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .ps-grid { grid-template-columns: 1fr; gap: 24px; }
+            .security-grid { grid-template-columns: 1fr; }
+            .hero-stats { gap: 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .cta-box { padding: 40px 24px; }
+        }
+
+        /* ── Mobile nav overlay ────────────────── */
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(6,8,15,0.97);
+            backdrop-filter: blur(20px);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ── Floating particles (decorative) ──── */
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--cyan);
+            opacity: 0.2;
+            animation: float-up linear infinite;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.2; }
+            90% { opacity: 0.2; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="nav-logo-icon">EL</div>
+                <span class="nav-logo-text">Embry Labs</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">Process</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#deep-dives">Solutions</a></li>
+                <li><a href="#security">Security</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-secondary" style="padding:10px 20px; font-size:0.85rem;">Contact Us</a>
+                <a href="#contact" class="btn btn-primary" style="padding:10px 20px; font-size:0.85rem;">Free Consultation</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+        <a href="#services" onclick="closeMobileNav()">Services</a>
+        <a href="#how-it-works" onclick="closeMobileNav()">Process</a>
+        <a href="#technology" onclick="closeMobileNav()">Technology</a>
+        <a href="#deep-dives" onclick="closeMobileNav()">Solutions</a>
+        <a href="#security" onclick="closeMobileNav()">Security</a>
+        <a href="#contact" class="btn btn-primary" onclick="closeMobileNav()">Free Consultation</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════ -->
+    <section class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    Now accepting new clients &mdash; Spring 2026
+                </div>
+                <h1>
+                    Bring <span class="gradient-text">AI&nbsp;power</span> to your small business.<br>
+                    <span style="font-size:0.65em; font-weight:600; color:var(--text-secondary);">Without the enterprise price tag.</span>
+                </h1>
+                <p>
+                    Embry Labs is a hands-on AI integration consultancy that builds custom tools,
+                    automates workflows, and deploys intelligent systems &mdash; tailored to
+                    the platforms you already use.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-primary">
+                        Book a Free Consultation
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">100%</div>
+                        <div class="hero-stat-label">In-Person &amp; Remote</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">15+</div>
+                        <div class="hero-stat-label">AI Technologies</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">Free</div>
+                        <div class="hero-stat-label">Initial Consultation</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-terminal">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">embry-labs-ai &mdash; integration pipeline</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div><span class="prompt">$</span> <span class="command">embry analyze</span> --scope full-stack</div>
+                        <div class="output">&nbsp; Scanning databases, APIs, workflows&hellip;</div>
+                        <div class="success">&nbsp; &#10003; 3 integration opportunities found</div>
+                        <br>
+                        <div><span class="prompt">$</span> <span class="command">embry deploy</span> --mcp-tools --agentic-ai</div>
+                        <div class="output">&nbsp; Building custom MCP server&hellip;</div>
+                        <div class="output">&nbsp; Connecting to <span class="accent">SQL &middot; Excel &middot; Power BI</span></div>
+                        <div class="success">&nbsp; &#10003; AI pipeline live on port 5010</div>
+                        <br>
+                        <div><span class="prompt">$</span> <span class="command">embry report</span> --format powerpoint</div>
+                        <div class="success">&nbsp; &#10003; Executive report generated</div>
+                        <div class="output">&nbsp; Savings estimate: <span class="accent">18 hrs/week</span></div>
+                        <br>
+                        <div><span class="prompt">$</span> <span class="typing-cursor"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         TRUST BAR
+         ═══════════════════════════════════════ -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-label">Platforms &amp; ecosystems we integrate with</div>
+            <div class="trust-logos">
+                <div class="trust-logo">
+                    <svg viewBox="0 0 24 24"><path d="M0 0h11.377v11.372H0zm12.623 0H24v11.372H12.623zM0 12.623h11.377V24H0zm12.623 0H24V24H12.623z"/></svg>
+                    Microsoft 365
+                </div>
+                <div class="trust-logo">
+                    <svg viewBox="0 0 24 24"><path d="M22.2 14.44c-.12-.38-.6-.82-1.38-.82-.58 0-1.06.22-1.4.6-.18-.78-.82-1.36-1.62-1.36-.42 0-.8.16-1.08.42V10.2c0-1-.82-1.82-1.82-1.82s-1.82.82-1.82 1.82v5.06l-1.12-1.36c-.68-.82-1.92-.94-2.74-.26-.82.68-.94 1.92-.26 2.74l3.48 4.2c.56.68 1.4 1.08 2.28 1.08h4.3c1.8 0 3.28-1.4 3.38-3.2l.16-2.96c.04-.38-.08-.76-.2-1.06zM4.44 3.96l2.88 2.88L4.44 9.72c-.36.36-.36.96 0 1.32s.96.36 1.32 0l2.88-2.88 2.88 2.88c.36.36.96.36 1.32 0s.36-.96 0-1.32L9.96 6.84l2.88-2.88c.36-.36.36-.96 0-1.32s-.96-.36-1.32 0L8.64 5.52 5.76 2.64c-.36-.36-.96-.36-1.32 0s-.36.96 0 1.32z"/></svg>
+                    Power BI
+                </div>
+                <div class="trust-logo">
+                    <svg viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.002l5.355-1.12.942-13.47z"/></svg>
+                    SharePoint
+                </div>
+                <div class="trust-logo">
+                    <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </div>
+                <div class="trust-logo">
+                    <svg viewBox="0 0 24 24"><path d="M19.14 7.5A2.86 2.86 0 0022 4.64 2.86 2.86 0 0019.14 1.78 2.86 2.86 0 0016.28 4.64 2.86 2.86 0 0019.14 7.5zM14.14 2.5h-4.28v2h4.28v-2zM4.86 7.5A2.86 2.86 0 007.72 4.64 2.86 2.86 0 004.86 1.78 2.86 2.86 0 002 4.64 2.86 2.86 0 004.86 7.5zM22 9.5H2v2h20v-2zM6 14.5v8h5v-8H6zm7 0v8h5v-8h-5z"/></svg>
+                    Azure / Fabric
+                </div>
+                <div class="trust-logo">
+                    <svg viewBox="0 0 24 24"><path d="M7.078 0C3.168 0 0 3.168 0 7.078v9.844C0 20.832 3.168 24 7.078 24h9.844C20.832 24 24 20.832 24 16.922V7.078C24 3.168 20.832 0 16.922 0H7.078zm6.965 5.998c.527 0 .955.428.955.955v4.094h4.094a.955.955 0 110 1.91h-4.094v4.094a.955.955 0 11-1.91 0v-4.094H8.994a.955.955 0 110-1.91h4.094V6.953c0-.527.428-.955.955-.955z"/></svg>
+                    Slack / Teams
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PROBLEM / SOLUTION
+         ═══════════════════════════════════════ -->
+    <section class="section problem-solution" id="why">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:48px;">
+                <span class="section-label">Why Embry Labs</span>
+                <h2 class="section-title">AI is moving fast. <span class="gradient-text">Most small businesses are stuck.</span></h2>
+                <p class="section-subtitle" style="margin:0 auto;">You know AI could transform your operations &mdash; but between the hype, the complexity, and the cost of enterprise consultants, getting started feels impossible.</p>
+            </div>
+            <div class="ps-grid fade-in">
+                <div class="ps-card problem">
+                    <h3>&#9888; The Reality Today</h3>
+                    <ul>
+                        <li>Employees copy-paste between spreadsheets, databases, and email for hours</li>
+                        <li>Reports take days to compile manually across disconnected systems</li>
+                        <li>Enterprise AI consultants charge six-figure minimums and speak another language</li>
+                        <li>Free AI tools are generic &mdash; they don&rsquo;t know your data or your business</li>
+                        <li>Security and compliance questions go unanswered</li>
+                        <li>Your team knows AI could help, but nobody knows where to start</li>
+                    </ul>
+                </div>
+                <div class="ps-card solution">
+                    <h3>&#10003; What Embry Labs Delivers</h3>
+                    <ul>
+                        <li>Custom AI tools that plug directly into your existing databases and files</li>
+                        <li>Automated reports, exports, and dashboards generated in seconds</li>
+                        <li>Small-business pricing with transparent, milestone-based plans</li>
+                        <li>AI agents trained on your specific data, rules, and workflows</li>
+                        <li>Security-first architecture with local AI options &mdash; your data stays yours</li>
+                        <li>In-person and remote consultants who speak plain English, not jargon</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SERVICES
+         ═══════════════════════════════════════ -->
+    <section class="section" id="services">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title">Everything you need to <span class="gradient-text">integrate AI</span> into your business.</h2>
+                <p class="section-subtitle" style="margin:0 auto;">From quick automation wins to full-scale intelligent systems &mdash; we meet you where you are.</p>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card fade-in">
+                    <div class="service-icon cyan">&#129302;</div>
+                    <h3>MCP Tools &amp; Agentic AI</h3>
+                    <p>Build Model Context Protocol servers that give AI agents direct, secure access to your databases, APIs, and business systems &mdash; turning ChatGPT-style tools into specialized business assistants.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">MCP Servers</span>
+                        <span class="service-tag">AI Agents</span>
+                        <span class="service-tag">Tool Calling</span>
+                        <span class="service-tag">RAG</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon violet">&#128202;</div>
+                    <h3>Reports, Exports &amp; Dashboards</h3>
+                    <p>Automate the creation of PowerPoints, Excel reports, Power BI dashboards, and custom data exports. AI-powered queries replace hours of manual data wrangling.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Power BI</span>
+                        <span class="service-tag">Power Query</span>
+                        <span class="service-tag">Excel VBA</span>
+                        <span class="service-tag">PowerPoint</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon emerald">&#128268;</div>
+                    <h3>Database &amp; API Integration</h3>
+                    <p>Connect your SQL databases, REST APIs, and SaaS platforms into unified data pipelines. We design schemas, build connectors, and ensure data flows seamlessly between systems.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">SQL / NoSQL</span>
+                        <span class="service-tag">REST APIs</span>
+                        <span class="service-tag">Azure Fabric</span>
+                        <span class="service-tag">ETL</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon amber">&#9881;&#65039;</div>
+                    <h3>Custom Applications &amp; Extensions</h3>
+                    <p>Purpose-built applications, browser extensions, VS Code extensions, and add-ins designed around your workflows. No off-the-shelf compromises.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Web Apps</span>
+                        <span class="service-tag">Extensions</span>
+                        <span class="service-tag">Mobile</span>
+                        <span class="service-tag">Add-ins</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon rose">&#127918;</div>
+                    <h3>Workflow Automation &amp; Triggers</h3>
+                    <p>Design event-driven workflows with custom triggers &mdash; automated emails, approval chains, data sync jobs, and scheduled AI tasks that run without human intervention.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Java</span>
+                        <span class="service-tag">Python</span>
+                        <span class="service-tag">Power Automate</span>
+                        <span class="service-tag">Webhooks</span>
+                    </div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon cyan">&#128187;</div>
+                    <h3>Local AI &amp; Private Deployment</h3>
+                    <p>Deploy AI models on your own hardware &mdash; no cloud dependency, no data leaving your network. Ideal for regulated industries and businesses that demand full data control.</p>
+                    <div class="service-tags">
+                        <span class="service-tag">Local LLMs</span>
+                        <span class="service-tag">On-Premise</span>
+                        <span class="service-tag">Air-Gapped</span>
+                        <span class="service-tag">GPU Setup</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         HOW IT WORKS
+         ═══════════════════════════════════════ -->
+    <section class="section how-it-works" id="how-it-works">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="section-label">Our Process</span>
+                <h2 class="section-title">From first conversation to <span class="gradient-text">running system</span>.</h2>
+                <p class="section-subtitle" style="margin:0 auto;">A transparent, milestone-driven process designed for small business timelines and budgets.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Discovery Call</h3>
+                    <p>Free consultation where we review your current systems, databases, pain points, and goals. We map out what&rsquo;s possible and identify quick wins.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Architecture &amp; Scope</h3>
+                    <p>We deliver a clear proposal: database model review, security assessment, integration blueprint, timeline, and a fixed-price or milestone plan.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Build &amp; Iterate</h3>
+                    <p>Hands-on development with weekly check-ins. You see working demos early and often &mdash; no disappearing for months and hoping for the best.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">4</div>
+                    <h3>Deploy &amp; Support</h3>
+                    <p>We deploy to your environment with full documentation and training. Ongoing support plans available so your team is never left stranded.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         TECHNOLOGY STACK
+         ═══════════════════════════════════════ -->
+    <section class="section" id="technology">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="section-label">Technology</span>
+                <h2 class="section-title">Built with the <span class="gradient-text">latest and most reliable</span> technology.</h2>
+                <p class="section-subtitle" style="margin:0 auto;">We stay on the cutting edge so you don&rsquo;t have to. Every tool we use is chosen for reliability, security, and real-world results.</p>
+            </div>
+            <div class="tech-stack-grid fade-in">
+                <div class="tech-item"><span class="tech-item-icon">&#128013;</span><span class="tech-item-name">Python</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#9749;</span><span class="tech-item-name">Java</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#9889;</span><span class="tech-item-name">C / C++</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#127760;</span><span class="tech-item-name">HTML / CSS / JS</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128196;</span><span class="tech-item-name">XML / JSON</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128188;</span><span class="tech-item-name">Excel VBA</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128202;</span><span class="tech-item-name">Power BI</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128640;</span><span class="tech-item-name">Power Query</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#9729;&#65039;</span><span class="tech-item-name">Azure / Fabric</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#129302;</span><span class="tech-item-name">MCP Protocol</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128209;</span><span class="tech-item-name">REST / GraphQL</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128024;</span><span class="tech-item-name">PostgreSQL</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128025;</span><span class="tech-item-name">SQL Server</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#129516;</span><span class="tech-item-name">Local LLMs</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#127919;</span><span class="tech-item-name">Game SDKs</span></div>
+                <div class="tech-item"><span class="tech-item-icon">&#128736;</span><span class="tech-item-name">VS Code Ext.</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FEATURE DEEP-DIVES
+         ═══════════════════════════════════════ -->
+    <section class="section how-it-works" id="deep-dives">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:64px;">
+                <span class="section-label">Deep Dives</span>
+                <h2 class="section-title">See what <span class="gradient-text">Embry Labs</span> can build for you.</h2>
+            </div>
+
+            <!-- Deep Dive 1: MCP + Agentic AI -->
+            <div class="feature-row fade-in">
+                <div class="feature-content">
+                    <span class="section-label">MCP &amp; Agentic AI</span>
+                    <h3>Give AI direct access to your business data.</h3>
+                    <p>The Model Context Protocol (MCP) is the latest standard for connecting AI models to real-world data sources. We build custom MCP servers that let AI agents query your databases, create reports, and take actions &mdash; all with guardrails you control.</p>
+                    <ul class="feature-list">
+                        <li><span class="check">&#10003;</span> AI agents that query SQL databases in natural language</li>
+                        <li><span class="check">&#10003;</span> Secure tool-calling with role-based access controls</li>
+                        <li><span class="check">&#10003;</span> Auto-generated reports from live business data</li>
+                        <li><span class="check">&#10003;</span> Integration with Copilot, ChatGPT, Claude, and local models</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="feature-code">
+                        <span class="comment"># Embry Labs — Custom MCP Server</span><br>
+                        <span class="keyword">from</span> mcp.server <span class="keyword">import</span> Server<br>
+                        <span class="keyword">from</span> mcp.tools <span class="keyword">import</span> tool<br><br>
+                        <span class="keyword">@tool</span>(<span class="string">"query_sales"</span>)<br>
+                        <span class="keyword">def</span> <span class="func">query_sales</span>(region, quarter):<br>
+                        &nbsp;&nbsp;<span class="comment"># Secure, parameterized queries</span><br>
+                        &nbsp;&nbsp;results = db.<span class="func">execute</span>(<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"SELECT * FROM sales WHERE region=? AND q=?"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;[region, quarter]<br>
+                        &nbsp;&nbsp;)<br>
+                        &nbsp;&nbsp;<span class="keyword">return</span> <span class="func">format_report</span>(results)<br><br>
+                        <span class="comment"># AI agent can now ask:</span><br>
+                        <span class="comment"># "Show me Q1 sales for the West region"</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Dive 2: Reports & Automation -->
+            <div class="feature-row fade-in">
+                <div class="feature-content">
+                    <span class="section-label">Reports &amp; Automation</span>
+                    <h3>Hours of manual work, done in seconds.</h3>
+                    <p>We build pipelines that pull data from your sources, transform it with Power Query or Python, and output polished Excel reports, PowerPoint decks, and Power BI dashboards &mdash; automatically, on schedule, or on-demand.</p>
+                    <ul class="feature-list">
+                        <li><span class="check">&#10003;</span> One-click PowerPoint generation from live data</li>
+                        <li><span class="check">&#10003;</span> Excel VBA modules that automate complex calculations</li>
+                        <li><span class="check">&#10003;</span> Power BI dashboards connected to real-time APIs</li>
+                        <li><span class="check">&#10003;</span> Scheduled exports: daily, weekly, or event-triggered</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="feature-code">
+                        <span class="comment">' Embry Labs — Excel VBA Module</span><br>
+                        <span class="keyword">Sub</span> <span class="func">GenerateWeeklyReport</span>()<br>
+                        &nbsp;&nbsp;<span class="keyword">Dim</span> ws <span class="keyword">As</span> Worksheet<br>
+                        &nbsp;&nbsp;<span class="keyword">Set</span> ws = ThisWorkbook.Sheets(<span class="string">"Sales"</span>)<br><br>
+                        &nbsp;&nbsp;<span class="comment">' Pull fresh data from API</span><br>
+                        &nbsp;&nbsp;<span class="keyword">Call</span> <span class="func">RefreshFromAPI</span>(<span class="string">"https://api/sales"</span>)<br><br>
+                        &nbsp;&nbsp;<span class="comment">' Generate pivot + charts</span><br>
+                        &nbsp;&nbsp;<span class="keyword">Call</span> <span class="func">BuildPivotTable</span>(ws, <span class="string">"A1:F500"</span>)<br>
+                        &nbsp;&nbsp;<span class="keyword">Call</span> <span class="func">CreateCharts</span>(ws)<br><br>
+                        &nbsp;&nbsp;<span class="comment">' Export to PowerPoint</span><br>
+                        &nbsp;&nbsp;<span class="keyword">Call</span> <span class="func">ExportToPPTX</span>(<span class="string">"Weekly_Report"</span>)<br>
+                        &nbsp;&nbsp;MsgBox <span class="string">"Report complete!"</span><br>
+                        <span class="keyword">End Sub</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Dive 3: Local AI -->
+            <div class="feature-row fade-in">
+                <div class="feature-content">
+                    <span class="section-label">Local AI Deployment</span>
+                    <h3>Your AI, your hardware, your rules.</h3>
+                    <p>Not every business can send data to the cloud. We set up local AI models on your own machines &mdash; powerful language models, code assistants, and document processors that run entirely on-premise with zero external dependencies.</p>
+                    <ul class="feature-list">
+                        <li><span class="check">&#10003;</span> On-premise LLM deployment (Llama, Mistral, Phi, etc.)</li>
+                        <li><span class="check">&#10003;</span> GPU optimization and hardware recommendations</li>
+                        <li><span class="check">&#10003;</span> Air-gapped environments for regulated industries</li>
+                        <li><span class="check">&#10003;</span> Local Copilot-style coding assistants for dev teams</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="feature-code">
+                        <span class="comment"># Embry Labs — Local AI Setup</span><br>
+                        <span class="keyword">from</span> llama_cpp <span class="keyword">import</span> Llama<br><br>
+                        <span class="comment"># Runs 100% on your hardware</span><br>
+                        model = Llama(<br>
+                        &nbsp;&nbsp;model_path=<span class="string">"./models/mistral-7b.gguf"</span>,<br>
+                        &nbsp;&nbsp;n_gpu_layers=<span class="number">35</span>,<br>
+                        &nbsp;&nbsp;n_ctx=<span class="number">8192</span><br>
+                        )<br><br>
+                        response = model.<span class="func">create_chat_completion</span>([<br>
+                        &nbsp;&nbsp;{<span class="string">"role"</span>: <span class="string">"user"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;<span class="string">"content"</span>: <span class="string">"Summarize this quarter's</span><br>
+                        &nbsp;&nbsp;&nbsp;<span class="string">&nbsp;inventory report"</span>}<br>
+                        ])<br><br>
+                        <span class="comment"># Zero data leaves your network</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECURITY
+         ═══════════════════════════════════════ -->
+    <section class="section" id="security">
+        <div class="container">
+            <div style="text-align:center;">
+                <span class="section-label">Security &amp; Trust</span>
+                <h2 class="section-title">We take your <span class="gradient-text">data security</span> seriously.</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Every engagement starts with a security assessment. We build systems that protect your business from day one.</p>
+            </div>
+            <div class="security-grid fade-in">
+                <div class="security-card">
+                    <div class="icon">&#128274;</div>
+                    <h4>Security-First Architecture</h4>
+                    <p>Every integration is designed with least-privilege access, encrypted connections, and parameterized queries. We never cut corners on security.</p>
+                </div>
+                <div class="security-card">
+                    <div class="icon">&#127968;</div>
+                    <h4>Local &amp; On-Premise Options</h4>
+                    <p>Keep sensitive data on your own hardware. We specialize in local AI deployments that never send a single byte to external servers.</p>
+                </div>
+                <div class="security-card">
+                    <div class="icon">&#128203;</div>
+                    <h4>Compliance-Ready</h4>
+                    <p>We review your security posture, data handling policies, and compliance requirements before writing a single line of code. HIPAA, SOC 2, GDPR awareness built in.</p>
+                </div>
+                <div class="security-card">
+                    <div class="icon">&#128269;</div>
+                    <h4>Database Model Review</h4>
+                    <p>We audit your existing database schemas, identify vulnerabilities, optimize performance, and ensure your data foundation is solid before building on top of it.</p>
+                </div>
+                <div class="security-card">
+                    <div class="icon">&#128736;</div>
+                    <h4>Transparent Process</h4>
+                    <p>Full documentation of every system we build. You own the code, the configuration, and the knowledge. No vendor lock-in, ever.</p>
+                </div>
+                <div class="security-card">
+                    <div class="icon">&#128101;</div>
+                    <h4>Hands-On Training</h4>
+                    <p>We don&rsquo;t just build and leave. Your team gets trained on every tool we deploy so they can manage, modify, and extend it independently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CTA — FREE CONSULTATION
+         ═══════════════════════════════════════ -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-box fade-in">
+                <span class="section-label">Get Started</span>
+                <h2>Book your <span class="gradient-text">free consultation</span>.</h2>
+                <p>
+                    No commitment, no sales pitch. We&rsquo;ll review your current systems, discuss
+                    your goals, and show you exactly what&rsquo;s possible &mdash; with a clear scope,
+                    timeline, and budget before any work begins.
+                </p>
+                <a href="mailto:contact@embrylabs.com" class="btn btn-primary">
+                    Schedule a Free Discovery Call
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <div class="cta-includes">
+                    <span><span class="ico">&#10003;</span> Current-state assessment</span>
+                    <span><span class="ico">&#10003;</span> Security review</span>
+                    <span><span class="ico">&#10003;</span> Future-state roadmap</span>
+                    <span><span class="ico">&#10003;</span> No obligation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo" style="margin-bottom:4px;">
+                        <div class="nav-logo-icon">EL</div>
+                        <span class="nav-logo-text">Embry Labs</span>
+                    </a>
+                    <p>AI integration consulting built for small businesses. We bring enterprise-grade intelligence to teams of every size &mdash; with the personal touch of a local partner.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">MCP &amp; Agentic AI</a></li>
+                        <li><a href="#services">Reports &amp; Dashboards</a></li>
+                        <li><a href="#services">Database Integration</a></li>
+                        <li><a href="#services">Custom Applications</a></li>
+                        <li><a href="#services">Workflow Automation</a></li>
+                        <li><a href="#services">Local AI Deployment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#why">About Us</a></li>
+                        <li><a href="#how-it-works">Our Process</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                        <li><a href="#security">Security</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#contact">Free Consultation</a></li>
+                        <li><a href="#deep-dives">Case Studies</a></li>
+                        <li><a href="#technology">Tech Stack</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Embry Labs. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="LinkedIn" title="LinkedIn">&#128279;</a>
+                    <a href="#" aria-label="GitHub" title="GitHub">&#128187;</a>
+                    <a href="#" aria-label="Email" title="Email">&#9993;</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════
+         SCRIPTS
+         ═══════════════════════════════════════ -->
+    <script>
+        // ── Navbar scroll effect ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        });
+
+        // ── Mobile nav ──
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', () => mobileNav.classList.add('active'));
+        mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('active'));
+        function closeMobileNav() { mobileNav.classList.remove('active'); }
+
+        // ── Scroll-triggered fade-in ──
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12 });
+        fadeEls.forEach(el => observer.observe(el));
+
+        // ── Floating particles ──
+        (function createParticles() {
+            const container = document.getElementById('particles');
+            if (!container) return;
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (8 + Math.random() * 14) + 's';
+                p.style.animationDelay = Math.random() * 10 + 's';
+                p.style.width = p.style.height = (2 + Math.random() * 4) + 'px';
+                container.appendChild(p);
+            }
+        })();
+
+        // ── Smooth scroll for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
