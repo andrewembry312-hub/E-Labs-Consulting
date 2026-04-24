@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embry Labs — AI Integration Consulting for Small Business</title>
-    <meta name="description" content="Embry Labs helps small businesses save 15+ hours per week with custom AI tools, automated reporting, and database integrations. Free consultation — no commitment.">
+    <title>E-Labs — AI Integration Consulting for Small Business</title>
+    <meta name="description" content="E-Labs helps small businesses save 15+ hours per week with custom AI tools, automated reporting, and database integrations. Free consultation — no commitment.">
     <meta name="theme-color" content="#06080f">
     <meta name="color-scheme" content="dark">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Embry Labs — AI Integration Consulting for Small Business">
+    <meta property="og:title" content="E-Labs — AI Integration Consulting for Small Business">
     <meta property="og:description" content="Custom AI tools, automated reporting, and database integrations for small businesses. Free consultation.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://andrewembry312-hub.github.io/Embry-Labs-Consulting---master/">
@@ -21,7 +21,7 @@
 
     <style>
         /* ========================================================
-           EMBRY LABS v2 — CONVERSION-FOCUSED HOMEPAGE
+           E-LABS v2 — CONVERSION-FOCUSED HOMEPAGE
            Mobile-first · WCAG 2.1 AA · Performance-optimized
            ======================================================== */
 
@@ -897,6 +897,65 @@
         }
         .service-travel-note .ico { color: var(--emerald); }
 
+        /* ── Founders Two-Column Grid ───────── */
+        .founders-grid {
+            display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 8px;
+        }
+        @media (min-width: 820px) { .founders-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+        .founder-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg); padding: 36px 28px;
+            display: flex; flex-direction: column; align-items: center;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .founder-card:hover { border-color: var(--border-accent); box-shadow: 0 4px 40px rgba(56,189,248,0.09); }
+        .founder-card .about-photo { margin-bottom: 16px; }
+        .founder-card .about-photo-name { margin-bottom: 4px; }
+        .founder-card .about-photo-title { margin-bottom: 12px; }
+        .founder-card .about-linkedin { margin-bottom: 24px; }
+        .founder-bio-text {
+            font-size: 0.91rem; color: var(--text-secondary); line-height: 1.8;
+            text-align: left; width: 100%; margin-bottom: 0;
+        }
+        .founder-skills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; justify-content: flex-start; width: 100%; }
+        .founder-skill-tag {
+            display: inline-flex; align-items: center; font-size: 0.73rem; font-weight: 500;
+            padding: 4px 11px; border-radius: 999px;
+            background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.28);
+            color: #c4b5fd;
+        }
+
+        /* ── Products / Demos Section ────────── */
+        .products-section { background: var(--bg-primary); border-bottom: 1px solid var(--border-subtle); }
+        .products-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        @media (min-width: 680px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1060px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+        .product-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg); padding: 28px 26px;
+            display: flex; flex-direction: column; gap: 10px;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .product-card:hover { border-color: var(--border-accent); box-shadow: 0 4px 32px rgba(56,189,248,0.08); }
+        .product-featured { border-color: var(--border-accent); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(56,189,248,0.04) 100%); }
+        .product-card-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 2px; }
+        .product-card-label { font-size: 0.71rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--violet); }
+        .product-card-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+        .product-card-desc { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.76; flex: 1; }
+        .product-card-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.84rem; font-weight: 600; color: var(--cyan-bright);
+            text-decoration: none; margin-top: 4px; transition: color 0.2s;
+        }
+        .product-card-link:hover { color: var(--cyan); }
+        .product-card-link svg { transition: transform 0.2s; }
+        .product-card-link:hover svg { transform: translateX(3px); }
+        .product-badge {
+            display: inline-flex; align-items: center; font-size: 0.7rem; font-weight: 600;
+            padding: 3px 9px; border-radius: 999px; background: rgba(52,211,153,0.15);
+            border: 1px solid rgba(52,211,153,0.35); color: var(--emerald); margin-top: 2px; align-self: flex-start;
+        }
+
         /* ── Scroll animations ─────────────── */
         .reveal {
             opacity: 0; transform: translateY(20px);
@@ -932,14 +991,15 @@
          ═══════════════════════════════════════ -->
     <nav class="navbar" id="navbar" aria-label="Main navigation">
         <div class="container nav-inner">
-            <a href="#" class="nav-logo" aria-label="Embry Labs — Home">
+            <a href="#" class="nav-logo" aria-label="E-Labs — Home">
                 <div class="nav-logo-icon" aria-hidden="true">EL</div>
-                <span class="nav-logo-text">Embry Labs</span>
+                <span class="nav-logo-text">E-Labs</span>
             </a>
             <ul class="nav-links" role="list">
                 <li><a href="#about">About</a></li>
                 <li><a href="#pain-points">Problems We Solve</a></li>
                 <li><a href="#solutions">Services</a></li>
+                <li><a href="#products">Products</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#results">Results</a></li>
                 <li><a href="#security">Security</a></li>
@@ -959,6 +1019,7 @@
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">&times;</button>
         <a href="#about" onclick="closeMobileNav()">About</a>
         <a href="#pain-points" onclick="closeMobileNav()">Problems We Solve</a>
+        <a href="#products" onclick="closeMobileNav()">Products</a>
         <a href="#solutions" onclick="closeMobileNav()">Services</a>
         <a href="#process" onclick="closeMobileNav()">Process</a>
         <a href="#results" onclick="closeMobileNav()">Results</a>
@@ -988,7 +1049,7 @@
                     Your team wastes <span class="gradient-text">15+ hours a week</span> on work AI&nbsp;should&nbsp;do.
                 </h1>
                 <p class="hero-sub">
-                    Embry Labs builds custom AI tools that plug directly into the systems you already use &mdash; databases, Excel, Power&nbsp;BI, and more &mdash; so your team can stop copy-pasting and start growing.
+                    E-Labs builds custom AI tools that plug directly into the systems you already use &mdash; databases, Excel, Power&nbsp;BI, and more &mdash; so your team can stop copy-pasting and start growing.
                 </p>
 
                 <div class="hero-ctas">
@@ -1052,22 +1113,25 @@
     </div>
 
     <!-- ═══════════════════════════════════════
-         MEET THE FOUNDER
+         MEET THE FOUNDERS
          ═══════════════════════════════════════ -->
     <section class="section about-section" id="about" aria-labelledby="about-heading">
         <div class="container">
-            <div style="text-align:center; margin-bottom:44px;">
-                <span class="section-label">Meet the Founder</span>
-                <h2 class="section-heading">Built by someone who&rsquo;s <span class="gradient-text">done the work</span>.</h2>
+            <div style="text-align:center; margin-bottom:48px;">
+                <span class="section-label">Meet the Founders</span>
+                <h2 id="about-heading" class="section-heading">Two builders, <span class="gradient-text">one mission</span>.</h2>
+                <p class="section-sub" style="margin:0 auto;">E-Labs was co-founded by two brothers who spent their careers inside enterprise systems &mdash; then decided to bring that same capability directly to small businesses, personally, affordably, and without the corporate overhead.</p>
             </div>
-            <div class="about-inner reveal">
-                <div class="about-photo-wrap">
+            <div class="founders-grid reveal">
+
+                <!-- Andrew Embry -->
+                <div class="founder-card">
                     <img src="andrew-embry.jpg"
-                         alt="Andrew Embry — Founder, Embry Labs"
+                         alt="Andrew Embry — Co-Founder, E-Labs"
                          class="about-photo"
                          width="200" height="200">
                     <div class="about-photo-name">Andrew Embry</div>
-                    <div class="about-photo-title">Founder &amp; Lead Consultant</div>
+                    <div class="about-photo-title">Co-Founder &amp; Lead Consultant</div>
                     <a href="https://www.linkedin.com/in/andrew-embry-76906a221"
                        target="_blank" rel="noopener noreferrer"
                        class="about-linkedin"
@@ -1075,33 +1139,69 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
                         Connect on LinkedIn
                     </a>
-                </div>
-                <div class="about-content">
-                    <p id="about-heading" class="about-mission">
-                        My mission is to bring enterprise-grade AI and automation within reach of every small business &mdash; built personally, priced fairly, and designed to last long after the project ends.
+                    <p class="founder-bio-text">
+                        Andrew brings over 15 years of hands-on experience in ERP systems, data engineering, and manufacturing automation. His career has been spent inside real operational environments at companies like Steelcase and Haworth &mdash; building the SQL pipelines, VBA automation tools, and Power&nbsp;BI dashboards that keep production moving. He knows what broken workflows cost because he has fixed them from the inside.
                     </p>
-                    <p class="about-bio">
-                        I&rsquo;m Andrew Embry, founder of Embry Labs and a systems integration specialist with over 15 years of hands-on experience in ERP systems, data engineering, and process automation. My career has been spent inside real manufacturing and operations environments &mdash; at companies like Steelcase and Haworth &mdash; building the SQL pipelines, VBA automation tools, and Power&nbsp;BI dashboards that actually keep production moving. I know what broken workflows cost because I&rsquo;ve fixed them from the inside.
+                    <p class="founder-bio-text" style="margin-top:12px;">
+                        At E-Labs, Andrew is your primary contact for every engagement. He scopes, builds, and delivers each project personally &mdash; no junior hand-offs. Whether you need an AI agent wired into your database, a custom reporting pipeline, or a local AI system that keeps your data off the cloud, he handles it start to finish.
                     </p>
-                    <p class="about-bio">
-                        Today, through Embry Labs, I bring those same enterprise capabilities directly to small businesses. Every project is scoped, built, and delivered by me personally &mdash; no junior hand-offs, no outsourcing. Whether you need a custom AI agent wired into your database, an automated reporting pipeline, or a local AI system that keeps your data off the cloud entirely, I handle it start to finish.
-                    </p>
-                    <div class="about-service-areas">
-                        <h4>&#128205; Local Service Areas</h4>
-                        <div class="service-area-tags">
-                            <span class="service-tag">Grand Rapids, MI</span>
-                            <span class="service-tag">Holland, MI</span>
-                            <span class="service-tag">Kalamazoo, MI</span>
-                            <span class="service-tag">Muskegon, MI</span>
-                            <span class="service-tag">Lansing, MI</span>
-                            <span class="service-tag">West Michigan Region</span>
-                        </div>
-                        <p class="service-travel-note">
-                            <span class="ico" aria-hidden="true">&#9992;&#65039;</span>
-                            Available to travel and meet clients in person across the United States &mdash; remote-first, travel-ready.
-                        </p>
+                    <div class="founder-skills">
+                        <span class="founder-skill-tag">ERP Integration</span>
+                        <span class="founder-skill-tag">SQL Pipelines</span>
+                        <span class="founder-skill-tag">Power BI</span>
+                        <span class="founder-skill-tag">VBA Automation</span>
+                        <span class="founder-skill-tag">AI Consulting</span>
+                        <span class="founder-skill-tag">Systems Architecture</span>
+                        <span class="founder-skill-tag">Data Engineering</span>
                     </div>
                 </div>
+
+                <!-- Steve Embry -->
+                <div class="founder-card">
+                    <img src="steve-embry.jpg"
+                         alt="Steve Embry — Co-Founder, E-Labs"
+                         class="about-photo"
+                         width="200" height="200">
+                    <div class="about-photo-name">Steve Embry</div>
+                    <div class="about-photo-title">Co-Founder &amp; Lead Architect</div>
+                    <p class="founder-bio-text">
+                        Steve is the technical backbone of every E-Labs solution. He specializes in designing and deploying the infrastructure that keeps AI systems running at scale &mdash; from building custom MCP servers that give AI agents live access to business data, to architecting full API integration layers that bridge disparate systems without friction.
+                    </p>
+                    <p class="founder-bio-text" style="margin-top:12px;">
+                        His expertise spans self-hosted droplet server infrastructure, end-to-end data pipeline development, IDE integrations, and deep API engineering. Steve tracks the cutting edge of AI model development &mdash; including local large language models, emerging frontier models, and hardware-level optimization &mdash; so he can recommend the right tool for your environment, not just the most popular one. He evaluates GPU requirements, quantization tradeoffs, and memory constraints to match model capability to real-world hardware budgets.
+                    </p>
+                    <p class="founder-bio-text" style="margin-top:12px;">
+                        Steve&rsquo;s dedication to keeping pace with the rapidly evolving AI landscape means E-Labs clients always get solutions built on current best practices &mdash; whether that&rsquo;s a new reasoning model, a newly released MCP toolkit, or a smarter deployment pattern that cuts infrastructure costs in half.
+                    </p>
+                    <div class="founder-skills">
+                        <span class="founder-skill-tag">MCP Server Design</span>
+                        <span class="founder-skill-tag">API Architecture</span>
+                        <span class="founder-skill-tag">Local LLMs</span>
+                        <span class="founder-skill-tag">Droplet Hosting</span>
+                        <span class="founder-skill-tag">Data Pipelines</span>
+                        <span class="founder-skill-tag">IDE Integrations</span>
+                        <span class="founder-skill-tag">LLM Hardware Eval</span>
+                        <span class="founder-skill-tag">Frontier AI Models</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Service areas (shared) -->
+            <div class="about-service-areas reveal" style="max-width:720px; margin:44px auto 0;">
+                <h4>&#128205; Local Service Areas</h4>
+                <div class="service-area-tags">
+                    <span class="service-tag">Grand Rapids, MI</span>
+                    <span class="service-tag">Holland, MI</span>
+                    <span class="service-tag">Kalamazoo, MI</span>
+                    <span class="service-tag">Muskegon, MI</span>
+                    <span class="service-tag">Lansing, MI</span>
+                    <span class="service-tag">West Michigan Region</span>
+                </div>
+                <p class="service-travel-note">
+                    <span class="ico" aria-hidden="true">&#9992;&#65039;</span>
+                    Available to travel and meet clients in person across the United States &mdash; remote-first, travel-ready.
+                </p>
             </div>
         </div>
     </section>
@@ -1149,7 +1249,7 @@
                 </div>
             </div>
             <p class="pain-transition reveal">
-                <strong>That&rsquo;s exactly why we built Embry Labs.</strong> &darr;
+                <strong>That&rsquo;s exactly why we built E-Labs.</strong> &darr;
             </p>
         </div>
     </section>
@@ -1282,12 +1382,12 @@
         <div class="container">
             <div style="text-align:center;">
                 <span class="section-label">Client Stories</span>
-                <h2 class="section-heading" id="testimonials-heading">Why businesses choose <span class="gradient-text">Embry Labs</span>.</h2>
+                <h2 class="section-heading" id="testimonials-heading">Why businesses choose <span class="gradient-text">E-Labs</span>.</h2>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card reveal">
                     <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <blockquote>&ldquo;We were drowning in manual reporting. Embry Labs automated our entire weekly pipeline in two weeks &mdash; now it runs itself. The time savings are unreal.&rdquo;</blockquote>
+                    <blockquote>&ldquo;We were drowning in manual reporting. E-Labs automated our entire weekly pipeline in two weeks &mdash; now it runs itself. The time savings are unreal.&rdquo;</blockquote>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar" aria-hidden="true">JR</div>
                         <div>
@@ -1360,7 +1460,7 @@
         <div class="container">
             <div style="text-align:center; margin-bottom:56px;">
                 <span class="section-label">Deep Dives</span>
-                <h2 class="section-heading" id="features-heading">See what Embry Labs <span class="gradient-text">builds in action</span>.</h2>
+                <h2 class="section-heading" id="features-heading">See what E-Labs <span class="gradient-text">builds in action</span>.</h2>
             </div>
 
             <!-- Feature 1: MCP -->
@@ -1377,7 +1477,7 @@
                 </div>
                 <div class="feature-visual" aria-hidden="true">
                     <div class="feature-code">
-                        <span class="cm"># Embry Labs &mdash; Custom MCP Server</span><br>
+                        <span class="cm"># E-Labs &mdash; Custom MCP Server</span><br>
                         <span class="kw">from</span> mcp.server <span class="kw">import</span> Server<br>
                         <span class="kw">from</span> mcp.tools <span class="kw">import</span> tool<br><br>
                         <span class="kw">@tool</span>(<span class="str">"query_sales"</span>)<br>
@@ -1405,7 +1505,7 @@
                 </div>
                 <div class="feature-visual" aria-hidden="true">
                     <div class="feature-code">
-                        <span class="cm">' Embry Labs &mdash; Excel VBA Module</span><br>
+                        <span class="cm">' E-Labs &mdash; Excel VBA Module</span><br>
                         <span class="kw">Sub</span> <span class="fn">GenerateWeeklyReport</span>()<br>
                         &nbsp;&nbsp;<span class="kw">Dim</span> ws <span class="kw">As</span> Worksheet<br>
                         &nbsp;&nbsp;<span class="kw">Set</span> ws = ThisWorkbook.Sheets(<span class="str">"Sales"</span>)<br><br>
@@ -1446,6 +1546,80 @@
                         <span class="cm"># Zero data leaves your network</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PRODUCTS & LIVE DEMOS
+         ═══════════════════════════════════════ -->
+    <section class="section products-section" id="products" aria-labelledby="products-heading">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:52px;">
+                <span class="section-label">Live Products</span>
+                <h2 class="section-heading" id="products-heading">What we&rsquo;ve <span class="gradient-text">shipped</span>.</h2>
+                <p class="section-sub" style="margin:0 auto;">E-Labs doesn&rsquo;t just consult &mdash; we build. Here are live products and proven tools we&rsquo;ve brought to market that you can explore, deploy, and purchase today.</p>
+            </div>
+            <div class="products-grid">
+
+                <!-- BitSoul Hosting — featured -->
+                <div class="product-card product-featured reveal">
+                    <div class="product-card-icon">&#127760;</div>
+                    <span class="product-badge">&#9679; Live Product</span>
+                    <span class="product-card-label">Self-Hosted Apps</span>
+                    <div class="product-card-title">BitSoul Hosting Marketplace</div>
+                    <p class="product-card-desc">
+                        Browse and deploy production-ready web applications directly onto your own private server infrastructure. No SaaS subscriptions, no data sharing, no platform lock-in. BitSoul packages the apps your business needs with one-click deployment onto your own DigitalOcean droplet or VPS &mdash; you own the server, you own the data.
+                    </p>
+                    <ul class="feature-list" style="margin-top:6px; margin-bottom:0;">
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> Dozens of ready-to-deploy server apps</li>
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> Your infrastructure, your rules</li>
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> One-time or low recurring costs vs. SaaS alternatives</li>
+                    </ul>
+                    <a href="http://bitsoulhosting.com/marketplace" target="_blank" rel="noopener noreferrer" class="product-card-link">
+                        Browse the Marketplace
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- MCP Server Toolkit -->
+                <div class="product-card reveal">
+                    <div class="product-card-icon">&#129302;</div>
+                    <span class="product-card-label">AI Tooling</span>
+                    <div class="product-card-title">Custom MCP Server Framework</div>
+                    <p class="product-card-desc">
+                        Our battle-tested framework for building Model Context Protocol servers that connect AI agents directly to your databases, APIs, and internal tools. Built on real production deployments &mdash; not prototypes. Drop it into your environment, define your tools, and your AI agents get structured, secure access to live business data within hours.
+                    </p>
+                    <ul class="feature-list" style="margin-top:6px; margin-bottom:0;">
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> Works with Claude, Copilot, ChatGPT &amp; local models</li>
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> Built-in auth, rate limiting, and audit logging</li>
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> SQL, REST, and file system tool adapters included</li>
+                    </ul>
+                    <a href="#contact" class="product-card-link">
+                        Request a Demo
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Local AI Deployment Kit -->
+                <div class="product-card reveal">
+                    <div class="product-card-icon">&#129520;</div>
+                    <span class="product-card-label">On-Premise AI</span>
+                    <div class="product-card-title">Local AI Deployment Kit</div>
+                    <p class="product-card-desc">
+                        Everything you need to run a capable large language model entirely on your own hardware &mdash; no internet required, no API keys, no monthly bills. Includes model selection guidance, hardware assessment, quantization recommendations, inference server setup, and an IDE integration layer so your team can interact with it from their existing tools.
+                    </p>
+                    <ul class="feature-list" style="margin-top:6px; margin-bottom:0;">
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> Hardware spec report matched to your use case</li>
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> Ollama / llama.cpp / vLLM deployment options</li>
+                        <li><span class="ck" aria-hidden="true">&#10003;</span> VS Code + Cursor + API endpoint integration</li>
+                    </ul>
+                    <a href="#contact" class="product-card-link">
+                        Request a Demo
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1603,11 +1777,11 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="nav-logo" aria-label="Embry Labs — Home">
+                    <a href="#" class="nav-logo" aria-label="E-Labs — Home">
                         <div class="nav-logo-icon" aria-hidden="true">EL</div>
-                        <span class="nav-logo-text">Embry Labs</span>
+                        <span class="nav-logo-text">E-Labs</span>
                     </a>
-                    <p>AI integration consulting built for small businesses. Enterprise-grade intelligence with the personal touch of a local partner.</p>
+                    <p>AI integration and systems consulting built for small businesses. Enterprise-grade intelligence, delivered personally by our founding team.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Services</h4>
@@ -1623,8 +1797,9 @@
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul role="list">
-                        <li><a href="#about">Meet Andrew</a></li>
-                        <li><a href="#pain-points">Why Embry Labs</a></li>
+                        <li><a href="#about">Meet the Founders</a></li>
+                        <li><a href="#pain-points">Why E-Labs</a></li>
+                        <li><a href="#products">Products</a></li>
                         <li><a href="#process">Our Process</a></li>
                         <li><a href="#technology">Technology</a></li>
                         <li><a href="#security">Security</a></li>
@@ -1641,7 +1816,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Embry Labs. All rights reserved.</p>
+                <p>&copy; 2026 E-Labs. All rights reserved.</p>
                 <p><a href="mailto:contact@embrylabs.com" style="color:var(--cyan);">contact@embrylabs.com</a></p>
             </div>
         </div>
