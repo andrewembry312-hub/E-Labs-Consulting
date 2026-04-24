@@ -831,6 +831,72 @@
         }
         .footer-bottom p { font-size: 0.8rem; color: var(--text-muted); }
 
+        /* ═══════════════════════════════════════
+           FOUNDER / ABOUT SECTION
+           ═══════════════════════════════════════ */
+        .about-section {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .about-inner {
+            display: flex; flex-direction: column;
+            gap: 48px; align-items: center;
+        }
+        @media (min-width: 860px) {
+            .about-inner { flex-direction: row; align-items: flex-start; gap: 64px; }
+        }
+        .about-photo-wrap {
+            flex-shrink: 0; display: flex; flex-direction: column;
+            align-items: center; gap: 14px;
+        }
+        .about-photo {
+            width: 200px; height: 200px; border-radius: 50%;
+            object-fit: cover; object-position: center top;
+            border: 3px solid var(--border-accent);
+            box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px rgba(56,189,248,0.08);
+        }
+        .about-photo-name  { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); text-align: center; }
+        .about-photo-title { font-size: 0.82rem; color: var(--cyan); font-weight: 500; text-align: center; }
+        .about-linkedin {
+            display: inline-flex; align-items: center; gap: 7px;
+            color: var(--cyan-bright); text-decoration: none;
+            font-size: 0.82rem; font-weight: 600;
+            border: 1px solid var(--border-accent); border-radius: 999px;
+            padding: 6px 14px; background: var(--cyan-glow);
+            transition: background 0.2s, border-color 0.2s; margin-top: 4px;
+        }
+        .about-linkedin:hover { background: rgba(56,189,248,0.2); border-color: var(--cyan); }
+        .about-content { flex: 1; }
+        .about-mission {
+            font-size: 1.15rem; font-weight: 700; color: var(--text-primary);
+            line-height: 1.55; margin-bottom: 20px;
+            padding-left: 16px; border-left: 3px solid var(--cyan);
+        }
+        .about-bio {
+            font-size: 0.94rem; color: var(--text-secondary);
+            line-height: 1.8; margin-bottom: 20px;
+        }
+        .about-service-areas {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md); padding: 22px 24px; margin-top: 8px;
+        }
+        .about-service-areas h4 {
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--cyan); margin-bottom: 12px;
+        }
+        .service-area-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .service-tag {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 0.8rem; font-weight: 500; padding: 5px 12px;
+            border-radius: 999px; background: var(--cyan-glow);
+            border: 1px solid var(--border-accent); color: var(--text-secondary);
+        }
+        .service-travel-note {
+            display: flex; align-items: center; gap: 7px;
+            font-size: 0.82rem; color: var(--text-muted);
+        }
+        .service-travel-note .ico { color: var(--emerald); }
+
         /* ── Scroll animations ─────────────── */
         .reveal {
             opacity: 0; transform: translateY(20px);
@@ -871,6 +937,7 @@
                 <span class="nav-logo-text">Embry Labs</span>
             </a>
             <ul class="nav-links" role="list">
+                <li><a href="#about">About</a></li>
                 <li><a href="#pain-points">Problems We Solve</a></li>
                 <li><a href="#solutions">Services</a></li>
                 <li><a href="#process">Process</a></li>
@@ -890,6 +957,7 @@
     <!-- Mobile nav -->
     <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">&times;</button>
+        <a href="#about" onclick="closeMobileNav()">About</a>
         <a href="#pain-points" onclick="closeMobileNav()">Problems We Solve</a>
         <a href="#solutions" onclick="closeMobileNav()">Services</a>
         <a href="#process" onclick="closeMobileNav()">Process</a>
@@ -906,7 +974,6 @@
     <section class="hero" aria-labelledby="hero-heading">
         <div class="container hero-inner">
             <div class="hero-content">
-                <p style="font-size:1.4rem;font-weight:700;color:var(--cyan-bright);margin-bottom:12px;letter-spacing:0.04em;">HELLO STEVE</p>
                 <!-- Social proof micro-badge -->
                 <div class="hero-social-proof" aria-label="Trusted by multiple small businesses">
                     <span class="avatars" aria-hidden="true">
@@ -983,6 +1050,61 @@
             </div>
         </div>
     </div>
+
+    <!-- ═══════════════════════════════════════
+         MEET THE FOUNDER
+         ═══════════════════════════════════════ -->
+    <section class="section about-section" id="about" aria-labelledby="about-heading">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:44px;">
+                <span class="section-label">Meet the Founder</span>
+                <h2 class="section-heading">Built by someone who&rsquo;s <span class="gradient-text">done the work</span>.</h2>
+            </div>
+            <div class="about-inner reveal">
+                <div class="about-photo-wrap">
+                    <img src="andrew-embry.jpg"
+                         alt="Andrew Embry — Founder, Embry Labs"
+                         class="about-photo"
+                         width="200" height="200">
+                    <div class="about-photo-name">Andrew Embry</div>
+                    <div class="about-photo-title">Founder &amp; Lead Consultant</div>
+                    <a href="https://www.linkedin.com/in/andrew-embry-76906a221"
+                       target="_blank" rel="noopener noreferrer"
+                       class="about-linkedin"
+                       aria-label="Andrew Embry on LinkedIn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+                <div class="about-content">
+                    <p id="about-heading" class="about-mission">
+                        My mission is to bring enterprise-grade AI and automation within reach of every small business &mdash; built personally, priced fairly, and designed to last long after the project ends.
+                    </p>
+                    <p class="about-bio">
+                        I&rsquo;m Andrew Embry, founder of Embry Labs and a systems integration specialist with over 15 years of hands-on experience in ERP systems, data engineering, and process automation. My career has been spent inside real manufacturing and operations environments &mdash; at companies like Steelcase and Haworth &mdash; building the SQL pipelines, VBA automation tools, and Power&nbsp;BI dashboards that actually keep production moving. I know what broken workflows cost because I&rsquo;ve fixed them from the inside.
+                    </p>
+                    <p class="about-bio">
+                        Today, through Embry Labs, I bring those same enterprise capabilities directly to small businesses. Every project is scoped, built, and delivered by me personally &mdash; no junior hand-offs, no outsourcing. Whether you need a custom AI agent wired into your database, an automated reporting pipeline, or a local AI system that keeps your data off the cloud entirely, I handle it start to finish.
+                    </p>
+                    <div class="about-service-areas">
+                        <h4>&#128205; Local Service Areas</h4>
+                        <div class="service-area-tags">
+                            <span class="service-tag">Grand Rapids, MI</span>
+                            <span class="service-tag">Holland, MI</span>
+                            <span class="service-tag">Kalamazoo, MI</span>
+                            <span class="service-tag">Muskegon, MI</span>
+                            <span class="service-tag">Lansing, MI</span>
+                            <span class="service-tag">West Michigan Region</span>
+                        </div>
+                        <p class="service-travel-note">
+                            <span class="ico" aria-hidden="true">&#9992;&#65039;</span>
+                            Available to travel and meet clients in person across the United States &mdash; remote-first, travel-ready.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ═══════════════════════════════════════
          PAIN POINTS — Problem-first messaging
@@ -1501,6 +1623,7 @@
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul role="list">
+                        <li><a href="#about">Meet Andrew</a></li>
                         <li><a href="#pain-points">Why Embry Labs</a></li>
                         <li><a href="#process">Our Process</a></li>
                         <li><a href="#technology">Technology</a></li>
