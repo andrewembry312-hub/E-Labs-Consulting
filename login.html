@@ -283,7 +283,8 @@
                     sessionStorage.setItem('elabs_token', data.access_token || '');
                     showSuccess('Signed in successfully. Redirecting\u2026');
                     setTimeout(() => {
-                        window.location.href = `${BACKEND}/`;
+                        const _next = new URLSearchParams(window.location.search).get('next');
+                        window.location.href = _next ? decodeURIComponent(_next) : `${BACKEND}/`;
                     }, 800);
                 } else {
                     const err = await res.json().catch(() => ({}));

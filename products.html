@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Labs AI Platform — Copilot, The Machine, Enterprise, OpenClaw, Hermes, ComfyUI</title>
+    <meta name="description" content="Explore the full E-Labs AI platform: E-Labs Copilot, THE MACHINE workflow engine, Enterprise RBAC, OpenClaw Gateway, Hermes Agent, and ComfyUI integration — production-ready AI infrastructure for your business.">
+    <meta name="theme-color" content="#06080f">
+    <meta name="color-scheme" content="dark">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        :root {
+            --bg-deep:       #06080f;
+            --bg-primary:    #0a0e1a;
+            --bg-card:       #0f1422;
+            --border-subtle: rgba(56, 189, 248, 0.08);
+            --border-accent: rgba(56, 189, 248, 0.2);
+            --cyan:          #38bdf8;
+            --cyan-bright:   #67e8f9;
+            --cyan-glow:     rgba(56, 189, 248, 0.15);
+            --violet:        #8b5cf6;
+            --violet-glow:   rgba(139, 92, 246, 0.15);
+            --emerald:       #34d399;
+            --amber:         #fbbf24;
+            --rose:          #fb7185;
+            --text-primary:  #f1f5f9;
+            --text-secondary:#94a3b8;
+            --text-muted:    #7b8ba3;
+            --gradient-hero: linear-gradient(135deg, var(--cyan) 0%, var(--violet) 100%);
+            --focus-ring:    0 0 0 3px rgba(56, 189, 248, 0.65);
+            --radius-sm:     8px;
+            --radius-md:     12px;
+            --radius-lg:     16px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+            html { scroll-behavior: auto; }
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-deep); color: var(--text-primary);
+            line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+        }
+        .skip-link { position:absolute; top:-100%; left:16px; padding:12px 24px; background:var(--cyan); color:var(--bg-deep); font-weight:700; z-index:10000; text-decoration:none; border-radius:0 0 var(--radius-sm) var(--radius-sm); }
+        .skip-link:focus { top:0; }
+        :focus-visible { outline:2px solid var(--cyan); outline-offset:3px; border-radius:4px; }
+        img { display:block; max-width:100%; height:auto; }
+
+        .container { max-width:1120px; margin:0 auto; padding:0 20px; }
+        .section   { padding:72px 0; position:relative; }
+
+        .section-label {
+            display:inline-block; font-size:0.72rem; font-weight:600;
+            letter-spacing:0.14em; text-transform:uppercase; color:var(--cyan);
+            background:var(--cyan-glow); border:1px solid var(--border-accent);
+            border-radius:999px; padding:5px 14px; margin-bottom:16px;
+        }
+        .section-heading { font-size:clamp(1.75rem,4vw,2.75rem); font-weight:800; line-height:1.15; margin-bottom:12px; letter-spacing:-0.01em; }
+        .section-sub { font-size:1.05rem; color:var(--text-secondary); max-width:600px; line-height:1.7; }
+        .gradient-text { background:var(--gradient-hero); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+        .btn {
+            display:inline-flex; align-items:center; justify-content:center; gap:8px;
+            font-family:inherit; font-weight:600; font-size:0.95rem;
+            border:none; border-radius:10px; padding:14px 28px;
+            cursor:pointer; text-decoration:none;
+            transition:transform 0.2s, box-shadow 0.2s, background 0.2s; white-space:nowrap;
+        }
+        .btn-primary { background:var(--gradient-hero); color:#fff; box-shadow:0 0 24px var(--cyan-glow),0 4px 16px rgba(0,0,0,0.3); }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 0 44px rgba(56,189,248,0.3),0 8px 28px rgba(0,0,0,0.4); }
+        .btn-secondary { background:transparent; color:var(--text-primary); border:1px solid var(--border-accent); }
+        .btn-secondary:hover { background:var(--cyan-glow); border-color:var(--cyan); }
+
+        /* Nav */
+        .navbar { position:fixed; top:0; left:0; right:0; z-index:1000; padding:14px 0; background:rgba(6,8,15,0.85); -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); border-bottom:1px solid var(--border-subtle); }
+        .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+        .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+        .nav-logo-icon { width:36px; height:36px; border-radius:8px; background:var(--gradient-hero); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:800; color:#fff; }
+        .nav-logo-text { font-size:1.05rem; font-weight:700; color:var(--text-primary); }
+        .nav-links { display:none; list-style:none; gap:4px; }
+        @media (min-width:900px) { .nav-links { display:flex; } }
+        .nav-links a { font-size:0.88rem; font-weight:500; color:var(--text-secondary); text-decoration:none; padding:6px 12px; border-radius:6px; transition:color 0.2s; }
+        .nav-links a:hover { color:var(--cyan-bright); }
+        .nav-cta-group { display:flex; align-items:center; gap:10px; }
+        .hamburger { display:flex; flex-direction:column; justify-content:center; gap:5px; width:40px; height:40px; background:none; border:none; cursor:pointer; padding:4px; }
+        .hamburger span { display:block; height:2px; background:var(--text-primary); border-radius:2px; }
+        @media (min-width:900px) { .hamburger { display:none; } }
+        .mobile-nav { display:none; flex-direction:column; gap:8px; position:fixed; inset:0; z-index:999; background:rgba(6,8,15,0.97); padding:80px 24px 32px; -webkit-backdrop-filter:blur(24px); backdrop-filter:blur(24px); }
+        .mobile-nav.open { display:flex; }
+        .mobile-nav a { font-size:1.1rem; font-weight:600; color:var(--text-primary); text-decoration:none; padding:12px 0; border-bottom:1px solid var(--border-subtle); }
+        .mobile-nav-close { position:absolute; top:20px; right:20px; background:none; border:none; color:var(--text-primary); font-size:1.8rem; cursor:pointer; }
+
+        /* Hero */
+        .platform-hero { padding: 128px 0 72px; background:var(--bg-primary); border-bottom:1px solid var(--border-subtle); }
+        .platform-hero h1 { font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.02em; margin-bottom:16px; }
+        .platform-hero p { font-size:1.1rem; color:var(--text-secondary); max-width:640px; line-height:1.7; margin-bottom:32px; }
+        .hero-badge-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+        .h-badge { font-size:0.75rem; font-weight:600; padding:5px 12px; border-radius:999px; background:rgba(52,211,153,0.1); border:1px solid rgba(52,211,153,0.3); color:var(--emerald); }
+        .h-badge-dev { font-size:0.75rem; font-weight:600; padding:5px 12px; border-radius:999px; background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.3); color:var(--amber); }
+
+        /* Product detail sections */
+        .product-detail { padding:72px 0; }
+        .product-detail:nth-child(odd) { background:var(--bg-primary); }
+        .product-detail-inner {
+            display:grid; grid-template-columns:1fr; gap:40px;
+        }
+        @media (min-width:900px) { .product-detail-inner { grid-template-columns:1fr 1fr; align-items:start; } }
+        @media (min-width:900px) { .product-detail-inner.reverse { direction:rtl; } .product-detail-inner.reverse > * { direction:ltr; } }
+
+        .product-detail-text h2 { font-size:clamp(1.5rem,3vw,2rem); font-weight:800; line-height:1.2; margin-bottom:12px; }
+        .product-detail-text p { font-size:0.92rem; color:var(--text-secondary); line-height:1.76; margin-bottom:16px; }
+
+        .feature-list { list-style:none; margin:16px 0; }
+        .feature-list li { display:flex; align-items:flex-start; gap:10px; font-size:0.88rem; color:var(--text-secondary); margin-bottom:9px; }
+        .ck { color:var(--emerald); font-weight:700; flex-shrink:0; }
+
+        .status-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:20px; }
+        .badge-live { display:inline-flex; align-items:center; font-size:0.7rem; font-weight:600; padding:3px 9px; border-radius:999px; background:rgba(52,211,153,0.15); border:1px solid rgba(52,211,153,0.35); color:var(--emerald); }
+        .badge-dev  { display:inline-flex; align-items:center; font-size:0.7rem; font-weight:600; padding:3px 9px; border-radius:999px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.35); color:var(--amber); }
+        .product-tag { font-size:0.71rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--violet); }
+
+        .cta-pair { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+
+        /* Code panel */
+        .code-panel {
+            background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:var(--radius-lg);
+            padding:28px 24px; font-family:'Courier New', monospace; font-size:0.8rem; line-height:1.8;
+            color:var(--text-secondary);
+        }
+        .code-panel .prompt { color:var(--cyan); font-weight:700; }
+        .code-panel .cmd    { color:var(--text-primary); font-weight:600; }
+        .code-panel .ok     { color:var(--emerald); }
+        .code-panel .hi     { color:var(--cyan-bright); }
+        .code-panel .cm     { color:var(--text-muted); font-style:italic; }
+        .code-panel .kw     { color:var(--violet); }
+        .code-panel .str    { color:var(--amber); }
+
+        /* Spec grid */
+        .spec-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; margin-top:24px; }
+        .spec-card { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:18px 16px; }
+        .spec-card h4 { font-size:0.82rem; font-weight:600; color:var(--cyan); margin-bottom:6px; }
+        .spec-card p  { font-size:0.8rem; color:var(--text-secondary); line-height:1.5; }
+
+        /* Section divider */
+        .section-divider { border:none; border-top:1px solid var(--border-subtle); margin:0; }
+
+        /* Desktop CTA */
+        .desktop-cta { background:var(--bg-card); border-top:1px solid var(--border-subtle); padding:56px 0; text-align:center; }
+        .desktop-cta h2 { font-size:1.8rem; font-weight:800; margin-bottom:8px; }
+        .desktop-cta p  { color:var(--text-secondary); max-width:520px; margin:0 auto 28px; font-size:0.95rem; }
+        .desktop-cta .btn-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+        /* Footer */
+        .footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); padding:32px 0; text-align:center; }
+        .footer p { font-size:0.82rem; color:var(--text-muted); }
+        .footer a { color:var(--cyan); text-decoration:none; }
+        .footer a:hover { color:var(--cyan-bright); }
+
+        .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.5s ease,transform 0.5s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION
+         ═══════════════════════════════════════ -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="E-Labs — Home">
+                <div class="nav-logo-icon" aria-hidden="true">EL</div>
+                <span class="nav-logo-text">E-Labs</span>
+            </a>
+            <ul class="nav-links" role="list">
+                <li><a href="index.html#pain-points">Problems We Solve</a></li>
+                <li><a href="index.html#solutions">Services</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="products.html" aria-current="page">Platform</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#results">Results</a></li>
+            </ul>
+            <div class="nav-cta-group">
+                <a href="index.html#faq" class="btn btn-secondary">FAQ</a>
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="index.html#contact" class="btn btn-primary">Free Consultation</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">&times;</button>
+        <a href="index.html#pain-points" onclick="closeMobileNav()">Problems We Solve</a>
+        <a href="index.html#solutions" onclick="closeMobileNav()">Services</a>
+        <a href="index.html#products" onclick="closeMobileNav()">Products</a>
+        <a href="products.html" onclick="closeMobileNav()">Platform</a>
+        <a href="about.html" onclick="closeMobileNav()">About</a>
+        <a href="login.html" onclick="closeMobileNav()">Login</a>
+        <a href="index.html#faq" onclick="closeMobileNav()">FAQ</a>
+        <a href="index.html#contact" class="btn btn-primary" onclick="closeMobileNav()">Free Consultation</a>
+    </div>
+
+    <main id="main">
+
+    <!-- ═══════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════ -->
+    <section class="platform-hero">
+        <div class="container">
+            <span class="section-label">E-Labs AI Platform</span>
+            <h1>Proprietary AI systems <span class="gradient-text">built and shipped</span>.</h1>
+            <p>E-Labs doesn&rsquo;t just consult &mdash; we build. The platform below is the working infrastructure we operate, refine, and deploy for clients. Every product is in active production use.</p>
+            <div class="hero-badge-row">
+                <span class="h-badge">&#9679; E-Labs Copilot — Production Ready</span>
+                <span class="h-badge">&#9679; THE MACHINE — Production Ready</span>
+                <span class="h-badge">&#9679; OpenClaw — Production Ready</span>
+                <span class="h-badge">&#9679; Hermes Agent — Production Ready</span>
+                <span class="h-badge">&#9679; ComfyUI — Production Ready</span>
+                <span class="h-badge-dev">&#9679; Enterprise — In Development</span>
+                <span class="h-badge-dev">&#9679; Desktop App — In Development</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         E-LABS COPILOT
+         ═══════════════════════════════════════ -->
+    <section class="product-detail section" id="copilot">
+        <div class="container">
+            <div class="product-detail-inner reveal">
+                <div class="product-detail-text">
+                    <span class="product-tag">AI Assistant</span>
+                    <div class="status-row">
+                        <h2>E-Labs Copilot</h2>
+                        <span class="badge-live">&#9679; Production Ready</span>
+                    </div>
+                    <p>A fully local conversational AI assistant with CEO-level agent routing, persistent memory, multi-model support, real-time SSE streaming, and built-in tool-calling. Runs 100% on your own hardware with zero cloud dependency &mdash; or routes to cloud models when you need them.</p>
+                    <p>E-Labs Copilot acts as a central command interface for all other platform components. It routes requests to the right model, remembers context across sessions, and exposes every capability through a clean single-page interface.</p>
+                    <ul class="feature-list">
+                        <li><span class="ck">&#10003;</span> Multi-model routing: Qwen, Mistral, DeepSeek, Claude, Gemini, GPT-4</li>
+                        <li><span class="ck">&#10003;</span> CEO orchestration layer selects best model per task automatically</li>
+                        <li><span class="ck">&#10003;</span> Persistent JSON-backed memory &amp; session management</li>
+                        <li><span class="ck">&#10003;</span> SSE streaming with inline tool-call interception</li>
+                        <li><span class="ck">&#10003;</span> THE MACHINE project sidebar integration</li>
+                        <li><span class="ck">&#10003;</span> OpenClaw and Hermes agent runtime badges</li>
+                    </ul>
+                    <div class="cta-pair">
+                        <a href="index.html#contact" class="btn btn-primary">Request a Demo <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="login.html" class="btn btn-secondary">Login to Try Live</a>
+                    </div>
+                </div>
+                <div class="code-panel">
+                    <span class="cm"># E-Labs Copilot — live session</span><br>
+                    <span class="prompt">$</span> <span class="cmd">elabs-copilot start</span> --model qwen3-35b<br>
+                    <span class="ok">&nbsp; &#10003; CEO routing layer active</span><br>
+                    <span class="ok">&nbsp; &#10003; Memory loaded (1,284 facts)</span><br>
+                    <span class="ok">&nbsp; &#10003; OpenClaw Gateway connected</span><br>
+                    <span class="ok">&nbsp; &#10003; Hermes Agent runtime ready</span><br><br>
+                    <span class="prompt">$</span> <span class="cmd">curl</span> http://localhost:8001/api/stack<br>
+                    <span class="hi">{</span><br>
+                    &nbsp;&nbsp;<span class="str">"models"</span>: [<span class="str">"qwen3"</span>, <span class="str">"deepseek-r1"</span>, <span class="str">"claude"</span>],<br>
+                    &nbsp;&nbsp;<span class="str">"openclaw"</span>: <span class="kw">true</span>,<br>
+                    &nbsp;&nbsp;<span class="str">"hermes"</span>: <span class="kw">true</span>,<br>
+                    &nbsp;&nbsp;<span class="str">"memory_facts"</span>: <span class="hi">1284</span><br>
+                    <span class="hi">}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════
+         THE MACHINE
+         ═══════════════════════════════════════ -->
+    <section class="product-detail section" id="machine">
+        <div class="container">
+            <div class="product-detail-inner reverse reveal">
+                <div class="product-detail-text">
+                    <span class="product-tag">Multi-Agent Workflow Engine</span>
+                    <div class="status-row">
+                        <h2>THE MACHINE</h2>
+                        <span class="badge-live">&#9679; Production Ready</span>
+                    </div>
+                    <p>A visual DAG-based multi-agent pipeline that orchestrates parallel and sequential AI tasks across multiple models and runtimes. VRAM-aware model scheduling ensures you never hit out-of-memory errors mid-run. Pause, resume, cancel, and intervene at any node in real time.</p>
+                    <p>THE MACHINE is the orchestration layer for complex, multi-step AI work: research pipelines, multi-file code generation, analysis chains, and automated content production &mdash; all in a single visual workflow.</p>
+                    <ul class="feature-list">
+                        <li><span class="ck">&#10003;</span> Visual node-based workflow designer with drag-and-drop</li>
+                        <li><span class="ck">&#10003;</span> Parallel swarm &amp; sequential DAG execution modes</li>
+                        <li><span class="ck">&#10003;</span> Real-time VRAM / GPU resource telemetry per node</li>
+                        <li><span class="ck">&#10003;</span> Pause / resume / cancel / intervene at any node</li>
+                        <li><span class="ck">&#10003;</span> OpenClaw gateway integration for industry-grade runtime</li>
+                        <li><span class="ck">&#10003;</span> Hung-node detection with automatic stall warnings</li>
+                    </ul>
+                    <div class="cta-pair">
+                        <a href="index.html#contact" class="btn btn-primary">Request a Demo <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="login.html" class="btn btn-secondary">Login to Try Live</a>
+                    </div>
+                </div>
+                <div class="code-panel">
+                    <span class="cm"># THE MACHINE — project execution</span><br>
+                    <span class="prompt">$</span> <span class="cmd">machine project</span> --create "Market Analysis"<br>
+                    <span class="ok">&nbsp; &#10003; Project initialized (6 nodes)</span><br><br>
+                    <span class="kw">Nodes:</span><br>
+                    &nbsp;&nbsp;[1] Research &rarr; <span class="hi">qwen3-35b</span> <span class="ok">DONE</span><br>
+                    &nbsp;&nbsp;[2] Summarize &rarr; <span class="hi">deepseek-r1</span> <span class="ok">DONE</span><br>
+                    &nbsp;&nbsp;[3] Competitors &rarr; <span class="hi">qwen3-35b</span> <span class="ok">RUNNING</span><br>
+                    &nbsp;&nbsp;[4] Financials &rarr; <span class="hi">deepseek-r1</span> <span class="cm">waiting</span><br>
+                    &nbsp;&nbsp;[5] Synthesis &rarr; <span class="hi">claude</span> <span class="cm">waiting</span><br>
+                    &nbsp;&nbsp;[6] Report &rarr; <span class="hi">qwen3-35b</span> <span class="cm">waiting</span><br><br>
+                    <span class="hi">VRAM: 38.2 / 49.4 GB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════
+         OPENCLAW GATEWAY
+         ═══════════════════════════════════════ -->
+    <section class="product-detail section" id="openclaw">
+        <div class="container">
+            <div class="product-detail-inner reveal">
+                <div class="product-detail-text">
+                    <span class="product-tag">AI Inference Gateway</span>
+                    <div class="status-row">
+                        <h2>OpenClaw Gateway</h2>
+                        <span class="badge-live">&#9679; Production Ready</span>
+                    </div>
+                    <p>A secure, publicly routable AI inference gateway that acts as the central runtime for THE MACHINE and E-Labs Copilot. Bearer-token authenticated, rate-limited, and TLS-terminated via Caddy reverse proxy. OpenClaw handles agent registration, tool-call dispatch, live capability discovery, and worker health monitoring.</p>
+                    <p>OpenClaw is designed to be the industry-grade backbone for multi-agent workflows &mdash; replacing ad-hoc direct LLM calls with a structured, auditable, and publicly accessible inference API.</p>
+                    <ul class="feature-list">
+                        <li><span class="ck">&#10003;</span> Publicly routable at <code style="color:var(--cyan-bright); font-size:0.82rem;">gateway.elabs.com</code> with TLS</li>
+                        <li><span class="ck">&#10003;</span> Bearer-token auth with per-worker rate limiting</li>
+                        <li><span class="ck">&#10003;</span> Hot-swap agent / model registration at runtime</li>
+                        <li><span class="ck">&#10003;</span> Live capability map &amp; health endpoints</li>
+                        <li><span class="ck">&#10003;</span> Full event schema for task lifecycle tracking</li>
+                        <li><span class="ck">&#10003;</span> Audit logging for every inference request</li>
+                    </ul>
+                    <div class="spec-grid">
+                        <div class="spec-card"><h4>Default Port</h4><p>18789 (local) · TLS on 443 via Caddy (public)</p></div>
+                        <div class="spec-card"><h4>Auth</h4><p>Bearer token · tokens hashed in DB · per-worker rate limits</p></div>
+                        <div class="spec-card"><h4>Public Access</h4><p>gateway.elabs.com · requires auth token · Tailscale as fallback</p></div>
+                    </div>
+                    <div class="cta-pair">
+                        <a href="index.html#contact" class="btn btn-primary">Request Gateway Access <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    </div>
+                </div>
+                <div class="code-panel">
+                    <span class="cm"># OpenClaw — public gateway check</span><br>
+                    <span class="prompt">$</span> <span class="cmd">curl</span> https://gateway.elabs.com/health<br>
+                    <span class="hi">{</span><br>
+                    &nbsp;&nbsp;<span class="str">"status"</span>: <span class="str">"healthy"</span>,<br>
+                    &nbsp;&nbsp;<span class="str">"workers"</span>: <span class="hi">3</span>,<br>
+                    &nbsp;&nbsp;<span class="str">"models_loaded"</span>: [<span class="str">"qwen3"</span>, <span class="str">"deepseek-r1"</span>],<br>
+                    &nbsp;&nbsp;<span class="str">"tls"</span>: <span class="kw">true</span>,<br>
+                    &nbsp;&nbsp;<span class="str">"auth"</span>: <span class="str">"bearer_token"</span><br>
+                    <span class="hi">}</span><br><br>
+                    <span class="prompt">$</span> <span class="cmd">curl</span> -H <span class="str">"Authorization: Bearer &lt;token&gt;"</span> \<br>
+                    &nbsp;&nbsp;https://gateway.elabs.com/api/agents/list<br>
+                    <span class="ok">&nbsp; &#10003; 3 agents registered &amp; ready</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════
+         HERMES AGENT
+         ═══════════════════════════════════════ -->
+    <section class="product-detail section" id="hermes">
+        <div class="container">
+            <div class="product-detail-inner reverse reveal">
+                <div class="product-detail-text">
+                    <span class="product-tag">Autonomous Agent Framework</span>
+                    <div class="status-row">
+                        <h2>Hermes Agent</h2>
+                        <span class="badge-live">&#9679; Production Ready</span>
+                    </div>
+                    <p>An autonomous AI agent runtime that self-improves by saving skills from every task it completes. Hermes maintains a growing library of reusable toolsets, compresses past trajectories into compact memory, and operates with a full web UI protected by ephemeral session-token authentication.</p>
+                    <p>Hermes integrates with E-Labs Copilot as a runtime badge &mdash; any session can be handed off to Hermes for fully autonomous multi-step task execution. It can browse the web, write and run code, manage files, call APIs, and plan complex workflows independently.</p>
+                    <ul class="feature-list">
+                        <li><span class="ck">&#10003;</span> Self-saving skill memory &mdash; gets smarter with every task</li>
+                        <li><span class="ck">&#10003;</span> Trajectory compression for long-horizon context management</li>
+                        <li><span class="ck">&#10003;</span> Web UI with ephemeral session-token auth &amp; Host-header validation</li>
+                        <li><span class="ck">&#10003;</span> Tool-calling: browser, code execution, file system, external APIs</li>
+                        <li><span class="ck">&#10003;</span> Batch runner for parallel multi-task workloads</li>
+                        <li><span class="ck">&#10003;</span> MCP server integration for structured data access</li>
+                    </ul>
+                    <div class="cta-pair">
+                        <a href="index.html#contact" class="btn btn-primary">Request a Demo <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                        <a href="login.html" class="btn btn-secondary">Login to Try Live</a>
+                    </div>
+                </div>
+                <div class="code-panel">
+                    <span class="cm"># Hermes Agent — autonomous task</span><br>
+                    <span class="prompt">$</span> <span class="cmd">hermes run</span> "Research competitors and write a summary report"<br><br>
+                    <span class="ok">&nbsp; &#10003; Task received</span><br>
+                    <span class="cm">&nbsp; Planning steps&hellip;</span><br>
+                    &nbsp;&nbsp;[1] Web search: industry landscape<br>
+                    &nbsp;&nbsp;[2] Extract key competitors<br>
+                    &nbsp;&nbsp;[3] Analyze pricing / features<br>
+                    &nbsp;&nbsp;[4] Write markdown report<br>
+                    &nbsp;&nbsp;[5] Save skill: <span class="str">"competitor_research"</span><br><br>
+                    <span class="ok">&nbsp; &#10003; Report saved to ./output/</span><br>
+                    <span class="ok">&nbsp; &#10003; Skill saved (library: 47 skills)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════
+         COMFYUI
+         ═══════════════════════════════════════ -->
+    <section class="product-detail section" id="comfyui">
+        <div class="container">
+            <div class="product-detail-inner reveal">
+                <div class="product-detail-text">
+                    <span class="product-tag">AI Image &amp; Video Generation</span>
+                    <div class="status-row">
+                        <h2>ComfyUI Integration</h2>
+                        <span class="badge-live">&#9679; Production Ready</span>
+                    </div>
+                    <p>A locally hosted AI image and video generation pipeline built on ComfyUI. Supports FLUX, Wan 2.1, SDXL, and custom workflows with full portability. Generates high-quality images and video directly on your GPU &mdash; no API fees, no content policy restrictions, no data leaving your network.</p>
+                    <p>Integrated into the E-Labs Copilot backend via a ComfyUI bridge, allowing media generation to be triggered directly from conversational AI sessions or THE MACHINE workflow nodes.</p>
+                    <ul class="feature-list">
+                        <li><span class="ck">&#10003;</span> FLUX, Wan 2.1, SDXL &amp; fully custom node workflows</li>
+                        <li><span class="ck">&#10003;</span> 100% local GPU &mdash; zero API costs or data egress</li>
+                        <li><span class="ck">&#10003;</span> Multi-user API key protection built in</li>
+                        <li><span class="ck">&#10003;</span> Bridge endpoint for Copilot and MACHINE integration</li>
+                        <li><span class="ck">&#10003;</span> Custom workflow import / export &amp; model management</li>
+                        <li><span class="ck">&#10003;</span> GPU VRAM optimization &amp; hardware guidance included</li>
+                    </ul>
+                    <div class="cta-pair">
+                        <a href="index.html#contact" class="btn btn-primary">Request a Demo <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    </div>
+                </div>
+                <div class="code-panel">
+                    <span class="cm"># ComfyUI — local generation pipeline</span><br>
+                    <span class="prompt">$</span> <span class="cmd">comfy generate</span> --workflow flux-dev.json<br>
+                    &nbsp;&nbsp;prompt: <span class="str">"photorealistic office with AI screens"</span><br>
+                    &nbsp;&nbsp;model: <span class="str">flux1-dev.safetensors</span><br>
+                    &nbsp;&nbsp;steps: <span class="hi">28</span> &nbsp;cfg: <span class="hi">7.5</span><br><br>
+                    <span class="ok">&nbsp; &#10003; Sampling: 28/28 steps</span><br>
+                    <span class="ok">&nbsp; &#10003; Image saved: ./output/00042.png</span><br>
+                    <span class="cm">&nbsp; VRAM: 18.4 GB used &mdash; zero API cost</span><br><br>
+                    <span class="prompt">$</span> <span class="cmd">comfy generate</span> --workflow wan2-video.json<br>
+                    <span class="ok">&nbsp; &#10003; Video generated: 5s @ 1080p</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════
+         ENTERPRISE (IN DEV)
+         ═══════════════════════════════════════ -->
+    <section class="product-detail section" id="enterprise">
+        <div class="container">
+            <div class="product-detail-inner reverse reveal">
+                <div class="product-detail-text">
+                    <span class="product-tag">Multi-Tenant Orchestration</span>
+                    <div class="status-row">
+                        <h2>E-Labs Enterprise</h2>
+                        <span class="badge-dev">&#9679; In Development</span>
+                    </div>
+                    <p>Role-based access control, multi-tenant model routing, team workspaces, and organization-scoped memory layers built on top of the Copilot and Machine platform. Designed for companies that need department-level AI access with centralized governance, audit logging, and usage reporting.</p>
+                    <p>Enterprise builds on the existing Copilot backend with a proper user database, JWT authentication, per-user memory scoping, and an admin dashboard for managing access tiers and usage quotas.</p>
+                    <ul class="feature-list">
+                        <li><span class="ck">&#10003;</span> Multi-tenant RBAC: admin, client, demo roles</li>
+                        <li><span class="ck">&#10003;</span> Organization-scoped memory &amp; project isolation</li>
+                        <li><span class="ck">&#10003;</span> Centralized audit logging &amp; per-user usage reporting</li>
+                        <li><span class="ck">&#10003;</span> JWT authentication with bcrypt password hashing</li>
+                        <li><span class="ck">&#10003;</span> Admin dashboard for user management &amp; quota control</li>
+                        <li><span class="ck">&#10003;</span> SQLite (dev) / PostgreSQL (prod) user database</li>
+                    </ul>
+                    <div class="cta-pair">
+                        <a href="index.html#contact" class="btn btn-primary">Request Early Access <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                    </div>
+                </div>
+                <div class="code-panel">
+                    <span class="cm"># Enterprise — roadmap preview</span><br>
+                    <span class="kw">POST</span> /api/auth/login<br>
+                    &nbsp;&nbsp;{ username, password } &rarr; JWT token<br><br>
+                    <span class="kw">GET</span> /api/auth/me<br>
+                    &nbsp;&nbsp;{ id, username, role: <span class="str">"client"</span>, org }<br><br>
+                    <span class="kw">GET</span> /api/memory?user_id=42<br>
+                    &nbsp;&nbsp;{ facts: [...], scoped_to: <span class="str">"user_42"</span> }<br><br>
+                    <span class="kw">GET</span> /api/admin/users<br>
+                    &nbsp;&nbsp;<span class="cm"># admin-only · lists all users</span><br>
+                    &nbsp;&nbsp;<span class="cm"># + usage stats + quota status</span><br><br>
+                    <span class="hi">Status: actively in development</span><br>
+                    <span class="cm">Contact us to join early access</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DESKTOP APP CTA
+         ═══════════════════════════════════════ -->
+    <div class="desktop-cta">
+        <div class="container">
+            <span class="section-label">Coming Soon</span>
+            <h2>E-Labs Desktop &mdash; <span class="gradient-text">one click to launch</span>.</h2>
+            <p>A native desktop application that bundles Copilot, THE MACHINE, OpenClaw, and ComfyUI into a single installer. No Docker, no terminal, no config files &mdash; just your complete local AI stack running on Windows or macOS.</p>
+            <div class="btn-row">
+                <a href="index.html#contact" class="btn btn-primary">
+                    Join the Waitlist
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="index.html#contact" class="btn btn-secondary">Book a Free Consultation</a>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 E-Labs AI Integration Consulting &mdash; <a href="index.html">Home</a> &middot; <a href="about.html">About</a> &middot; <a href="index.html#contact">Contact</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav  = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+        function openMobileNav()  { mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); }
+        function closeMobileNav() { mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); }
+        hamburger.addEventListener('click', openMobileNav);
+        mobileNavClose.addEventListener('click', closeMobileNav);
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
